@@ -1,4 +1,43 @@
 <html>
 <h1> This is my first page with GitHub Pages </h1>
 <p>Thanks GitHub!</p>
+<head>
+  <title>Countdown Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="countdown">Only 10 seconds left</div>
+
+<script>
+  function updateCountdown() {
+    var countdownElement = document.getElementById("countdown");
+    var secondsLeft = 10;
+    
+    var countdownInterval = setInterval(function() {
+      if (secondsLeft === 0) {
+        clearInterval(countdownInterval);
+        countdownElement.innerHTML = "Time's up!";
+      } else {
+        var minutesLeft = Math.floor(secondsLeft / 60);
+        var secondsDisplay = secondsLeft % 60;
+        
+        var formattedTime = ("0" + minutesLeft).slice(-2) + ":" + ("0" + secondsDisplay).slice(-2);
+        
+        countdownElement.innerHTML = "Only " + formattedTime + " left";
+        
+        secondsLeft--;
+      }
+    }, 1000);
+  }
+
+  updateCountdown();
+</script>
 </html>
